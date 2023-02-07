@@ -1,17 +1,19 @@
+from tkinter import *
 
-import tkinter as tk 
-from tkinter import END,Text
-from tkinter import Button
-root = tk.Tk()
-root.title('Quotes')
-def get_quote():
-    r = requests.get('https://api.quotable.io/random')
-    data = r.json()
-    quote = data['content']
-    text_box.delete('1.0', END)
-    text_box.insert(END, quote)
-text_box = Text(root, height=10, width=50)
-get_button =Button(root, text='Get Quote', command=get_quote)
-text_box.pack()
-get_button.pack()
-root.mainloop()
+root = Tk()
+root.title("Урок по Tkinter")
+root.geometry("400x200+700+500")
+root.resizable(width=False, height=False)
+
+value = StringVar()
+
+def test():
+    get = value.get()
+    l["text"] = get
+
+l = Label(text="Тестовый текст")
+e = Entry(textvariable=value)
+b = Button(command=test, text="")
+l.pack(side=BOTTOM)
+e.pack()
+b.pack()
